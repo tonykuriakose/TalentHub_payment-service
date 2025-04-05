@@ -8,7 +8,7 @@ config();
  const expressServer = new Server();
 
 
-const PORT = process.env.PORT || 3007; 
+const PORT = process.env.PORT || 3004; 
 
  expressServer.start(PORT);
 

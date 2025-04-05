@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 
 class Server {
   public app: Application;
@@ -7,6 +7,7 @@ class Server {
   constructor() {
     this.app = express();
     this.initialize();
+    this.setUpRoutes();
   }
 
   async initialize() {
@@ -17,9 +18,17 @@ class Server {
     }
   }
 
+  setUpRoutes(){
+    this.app.get("/",(req:Request,res:Response)=>{
+
+      res.status(200).json({message:"Response from payment API"})
+
+    })
+  }
+
   start(PORT:number | string){{
     this.server = this.app.listen(PORT,()=>{
-        console.log(`Server running on ${PORT}`);
+        console.log(`Payment Server running on ${PORT}`);
         
     })
   }
